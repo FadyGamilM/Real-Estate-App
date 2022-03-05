@@ -27,7 +27,7 @@
    - **Get specific published listing details**.
    - **Search for listings**.
 
-- Available Services For Realtor Users 
+## Available Services For Realtor Users 
    - **Get realtor's listings**.
    - **Get specific realtor's listing details**.
    - **create a listing**.
@@ -35,4 +35,10 @@
    - **Update the `is_published` status of a specific listing**.
    - **Delete a specific listing**.
 
+## How Database is managed for this application
+- #### **we have 2 separated databases**
+  - **The User Database**
+    - Responsible for managing the users of our app
+  - **The Listing Database**
+    - Responsible for managing all created listings (published and not published)
 
