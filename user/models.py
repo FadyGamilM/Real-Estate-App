@@ -15,6 +15,7 @@ class UserAccountManager(BaseUserManager):
       email = email.lower()
       user=self.model(email=email, name=name)
       user.set_password(password)
+      user.is_superuser = False
       # as we are dealing with multiple databases, we have to set the field using 
       user.save(using=self._db)
       return user
