@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'user',
     'listing',
+
 ]
 
 MIDDLEWARE = [
@@ -156,6 +157,9 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    # 'TOKEN_TYPE_CLAIM': 'token_type',
+    # 'TOKEN_USER_CLASS': 'rest_framework_simplejwt.models.TokenUser',
+
 }
 
 #! once you created a custom user model, you have to set the path to your model

@@ -1,0 +1,2 @@
+we will pas an optional query parameters which is going to be the slug
+of the listing if, you don't pass that, all listings will be retrieved

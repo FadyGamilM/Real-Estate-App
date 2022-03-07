@@ -3,13 +3,13 @@ from django.utils.timezone import now
 
 class Listing(models.Model):
    class SaleType(models.TextChoices):
-      FOR_SALE = 'for_sale'
-      FOR_RENT = 'for_rent'
+      FOR_SALE = 'for sale'
+      FOR_RENT = 'for rent'
    
    class HomeType(models.TextChoices):
       HOUSE = 'house'
       CONDO = 'condo'
-      TOWNHOUSE = 'townhouse'
+      TOWNHOUSE = 'town house'
 
    # we can't have foreign key relation btn user and listing as we have 2 separated databases
    realtor = models.EmailField(max_length=255)
@@ -22,9 +22,10 @@ class Listing(models.Model):
    description = models.TextField()
    price = models.IntegerField()
    bedrooms = models.IntegerField()
+   bathrooms = models.DecimalField(max_digits=2, decimal_places=1, default=1.0) 
    sale_type = models.CharField(max_length=15, choices=SaleType.choices, default=SaleType.FOR_SALE)
    home_type = models.CharField(max_length=15, choices=HomeType.choices, default=HomeType.HOUSE)
-   main_photos = models.ImageField(upload_to='listings/')
+   main_photo = models.ImageField(upload_to='listings/')
    photo_1 = models.ImageField(upload_to='listings/')
    photo_2 = models.ImageField(upload_to='listings/')
    photo_3 = models.ImageField(upload_to='listings/')
