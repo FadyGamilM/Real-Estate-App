@@ -91,6 +91,8 @@ DATABASES = {
    }
 }
 
+#! lets handle the database routers
+DATABASE_ROUTERS =['user.router.AuthRouter', 'listing.router.ListingRouter']
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -152,3 +154,7 @@ SIMPLE_JWT = {
     'AUTH_HEADER_TYPES': ('Bearer',),
     'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
 }
+
+#! once you created a custom user model, you have to set the path to your model
+AUTH_USER_MODEL='user.UserAccount'
+#!-------------------------------------
