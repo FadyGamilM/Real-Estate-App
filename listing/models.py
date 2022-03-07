@@ -1,3 +1,35 @@
 from django.db import models
+from django.utils.timezone import now
 
-# Create your models here.
+class Listing(models.Model):
+   class SaleType(models.TextChoices):
+      FOR_SALE = 'for_sale'
+      FOR_RENT = 'for_rent'
+   
+   class HomeType(models.TextChoices):
+      HOUSE = 'house'
+      CONDO = 'condo'
+      TOWNHOUSE = 'townhouse'
+
+   # we can't have foreign key relation btn user and listing as we have 2 separated databases
+   realtor = models.EmailField(max_length=255)
+   title = models.CharField(max_length=255)
+   slug = models.SlugField(unique=True)
+   address = models.CharField(max_length=255)
+   city = models.CharField(max_length=255)
+   state = models.CharField(max_length=255)
+   zipcode = models.CharField(max_length=30)
+   description = models.TextField()
+   price = models.IntegerField()
+   bedrooms = models.IntegerField()
+   sale_type = models.CharField(max_length=15, choices=SaleType.choices, default=SaleType.FOR_SALE)
+   home_type = models.CharField(max_length=15, choices=HomeType.choices, default=HomeType.HOUSE)
+   main_photos = models.ImageField(upload_to='listings/')
+   photo_1 = models.ImageField(upload_to='listings/')
+   photo_2 = models.ImageField(upload_to='listings/')
+   photo_3 = models.ImageField(upload_to='listings/')
+   is_published = models.BooleanField(default=False)
+   date_created = models.DateTimeField(default=now)
+
+   def __str__(self):
+      return self.title
